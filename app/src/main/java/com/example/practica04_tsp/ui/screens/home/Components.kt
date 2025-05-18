@@ -69,7 +69,6 @@ fun AddProductDialog(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Campo para presupuesto
                 OutlinedTextField(
                     value = budget,
                     onValueChange = {
@@ -175,14 +174,12 @@ fun ProductCard(
                     fontWeight = FontWeight.Bold
                 )
 
-                // Presupuesto con formato monetario
                 Text(
                     text = "Presupuesto: $${"%.2f".format(product.budget)}",
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.primary
                 )
 
-                // Prioridad con etiqueta descriptiva
                 Column {
                     Text(
                         text = "Prioridad:",

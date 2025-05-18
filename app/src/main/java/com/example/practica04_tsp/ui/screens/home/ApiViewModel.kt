@@ -39,13 +39,10 @@ class ApiViewModel : ViewModel() {
                 apiUiState = ApiUiState.Error("Error cargando datos")
                 return@addSnapshotListener
             }
-
-            // Solo actualizar si no hay cambios pendientes
             if (!hasPendingChanges) {
                 val firestoreProducts = snapshot?.documents?.mapNotNull {
                     it.toObject(Product::class.java)
                 } ?: emptyList()
-
                 products.clear()
                 products.addAll(firestoreProducts)
                 apiUiState = ApiUiState.Success(products.toList())
@@ -87,16 +84,13 @@ class ApiViewModel : ViewModel() {
         viewModelScope.launch {
             apiUiState = ApiUiState.Loading
             try {
-                // Guardar copias temporales de los cambios
                 val savedProducts = pendingProducts.toList()
                 val savedDeletes = pendingDeletes.toList()
 
-                // Actualización optimista: Mostrar cambios antes de confirmar en Firestore
                 products.removeAll { savedDeletes.contains(it.id) }
                 products.addAll(savedProducts)
                 apiUiState = ApiUiState.Success(products.toList())
 
-                // Ejecutar operaciones en lote
                 val batch = db.batch()
                 savedProducts.forEach { product ->
                     batch.set(productsCollection.document(product.id), product)
@@ -106,13 +100,11 @@ class ApiViewModel : ViewModel() {
                 }
                 batch.commit().await()
 
-                // Limpiar pendientes DESPUÉS de confirmar
                 pendingProducts.clear()
                 pendingDeletes.clear()
                 hasPendingChanges = false
 
             } catch (e: Exception) {
-                // Revertir cambios si falla
                 apiUiState = ApiUiState.Error("Error al guardar: ${e.message}")
                 hasPendingChanges = true
             }
@@ -131,7 +123,7 @@ class ApiViewModel : ViewModel() {
         return try {
             val encodedQuery = withContext(Dispatchers.IO) {
                 URLEncoder.encode(query, "UTF-8")
-            } // Codificar la query
+            }
 
             val result = Api.retrofitService.searchImages(
                 apiKey = apiKey,

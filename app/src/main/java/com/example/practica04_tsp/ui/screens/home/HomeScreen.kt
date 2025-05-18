@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -38,7 +37,6 @@ fun HomeScreen() {
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                // Botón de guardado (aparece arriba del Add cuando hay cambios)
                 if (viewModel.hasPendingChanges) {
                     FloatingActionButton(
                         onClick = { viewModel.saveChanges() },
@@ -72,12 +70,10 @@ fun HomeScreen() {
                 ApiUiState.Loading -> LoadingScreen()
                 is ApiUiState.Error -> ErrorScreen(message = state.message)
                 else -> {
-                    // Verificar si hay productos
                     val products = when (state) {
                         is ApiUiState.Success -> state.products
                         else -> emptyList()
                     }
-
                     if (products.isEmpty()) {
                         EmptyScreen()
                     } else {
