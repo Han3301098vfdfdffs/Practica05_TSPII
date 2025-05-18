@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "915835449267",
+    "project_id": "practica5-f63ff",
+    "storage_bucket": "practica5-f63ff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915835449267:android:d2e5f62912b9c6b19765c6",
+        "android_client_info": {
+          "package_name": "com.example.midespensa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915835449267-kp966pabcen2eajk4150pv8uv09k79k3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.midespensa",
+            "certificate_hash": "7aa1722e69b887c66e6e0504c3ebdbc9cfae5aae"
+          }
+        },
+        {
+          "client_id": "915835449267-s11p42srcel8aa7im06cej37prns2a4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7MdqK17Syn6VWqQLCiVYVpuxlLA3OnQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915835449267-s11p42srcel8aa7im06cej37prns2a4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915835449267:android:f622eecf36fc80e39765c6",
+        "android_client_info": {
+          "package_name": "com.example.practica04_tsp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "915835449267-s11p42srcel8aa7im06cej37prns2a4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7MdqK17Syn6VWqQLCiVYVpuxlLA3OnQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "915835449267-s11p42srcel8aa7im06cej37prns2a4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
